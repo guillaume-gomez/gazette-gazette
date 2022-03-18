@@ -1,0 +1,25 @@
+.toolbar-container {
+  border: 6px solid #42519a;
+  border-radius: 6px;
+  min-height: 50px;
+}
+
+.toolbar-top {
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 1rem;
+  background: #3181ca;
+  border-bottom: 2px solid #42519a;
+}
+
+.toolbar-bottom {
+  background: #FFFFFF;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+}

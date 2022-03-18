@@ -1,0 +1,9 @@
+.window-container {
+  border: 6px solid #42519a;
+  border-radius: 6px;
+  //filter: drop-shadow(10px 10px 4px rgba(0,0,0,0.75));
+}
+
+.window-content {
+  overflow: auto;
+}
