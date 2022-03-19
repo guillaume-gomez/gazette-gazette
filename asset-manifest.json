@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/gazette-gazette/static/css/main.23a98859.css",
+    "main.css": "/gazette-gazette/static/css/main.a7d92128.css",
     "main.js": "/gazette-gazette/static/js/main.2cb46a31.js",
     "static/js/787.1f2975fc.chunk.js": "/gazette-gazette/static/js/787.1f2975fc.chunk.js",
     "index.html": "/gazette-gazette/index.html",
-    "main.23a98859.css.map": "/gazette-gazette/static/css/main.23a98859.css.map",
+    "main.a7d92128.css.map": "/gazette-gazette/static/css/main.a7d92128.css.map",
     "main.2cb46a31.js.map": "/gazette-gazette/static/js/main.2cb46a31.js.map",
     "787.1f2975fc.chunk.js.map": "/gazette-gazette/static/js/787.1f2975fc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.23a98859.css",
+    "static/css/main.a7d92128.css",
     "static/js/main.2cb46a31.js"
   ]
 }
