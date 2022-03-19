@@ -7,17 +7,18 @@ interface WindowInterface {
   publicUrl: string;
   minimize: () => void;
   maximize: () => void;
+  label: string;
 }
 
 const footerHeight = 30;
-function Window({ publicUrl, minimize, maximize } : WindowInterface) {
+function Window({ publicUrl, minimize, maximize, label } : WindowInterface) {
   return (
     <div className="window-container">
       <div className="window-header">
-        <Toolbar minimize={minimize} maximize={maximize}  />
+        <Toolbar minimize={minimize} maximize={maximize} label={label} />
       </div>
       <div className="window-content">
-        <img src={process.env.PUBLIC_URL + publicUrl} />
+        <img className="window-image" src={process.env.PUBLIC_URL + publicUrl} />
       </div>
     </div>
   );

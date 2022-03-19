@@ -1,9 +1,10 @@
 //import logo from './logo.svg';  
 import React, { useState } from "react";
 import './App.css';
-import Window from "./Components/Window";
+import WindowManager from "./reducers/useWindows";
+import Windows from "./Components/Windows";
 import Toolbar  from "./Components/Toolbar";
-import Tab from "./Components/Tab";
+import Tabs from "./Components/Tabs";
 
 interface ContentInterface {
   url: string;
@@ -39,24 +40,16 @@ function App() {
   return (
     <body className="App">
       <header className="Header" >
-        <Toolbar />
+        <Toolbar label="000 - Canard //"/>
       </header>
-      <main className="Layout">
-        {
-          contentsState.map(({url}, index) => (
-            <Window maximize={()=> toggleWindow(index)} minimize={()=> toggleWindow(index)} publicUrl={url} />
-           )
-          )
-        }
-      </main>
-      <footer className="Footer">
-        {
-          contentsState.map(({name}, index) => (
-            <Tab name={name} onClick={todo} />
-           )
-          )
-        }
-      </footer>
+      <WindowManager.Provider>
+        <main className="Layout">
+          <Windows />
+        </main>
+        <footer className="Footer">
+          <Tabs />
+        </footer>
+      </WindowManager.Provider>
     </body>
   );
 }

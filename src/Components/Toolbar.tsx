@@ -5,8 +5,9 @@ import "./Toolbar.css";
 interface ToolbarInterface {
   minimize?: () => void;
   maximize?: () => void;
+  label: string;
 }
-function Toolbar({ minimize, maximize } : ToolbarInterface) {
+function Toolbar({ minimize, maximize, label } : ToolbarInterface) {
 
   function action() {
     console.log("to defined")
@@ -15,7 +16,7 @@ function Toolbar({ minimize, maximize } : ToolbarInterface) {
   return (
     <div className="toolbar-container">
       <div className="toolbar-top">
-        <span>000 - Canard //</span>
+        <span>{label}</span>
         <div className="buttons-container">
           <Button icon={"-"} onClick={() => minimize && minimize()} />
           <Button icon={"+"} onClick={() => maximize && maximize()} />

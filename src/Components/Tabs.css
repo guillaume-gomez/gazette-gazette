@@ -1,0 +1,14 @@
+.tabs-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  border: 6px solid #42519a;
+  border-radius: 6px;
+  background: #3181ca;
+  padding-left: 0.25rem;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  overflow: auto;
+}

@@ -3,29 +3,34 @@
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  border: 2px solid red;
+  //border: 2px solid red;
   height: 100vh;
   max-width: 90%;
   margin: auto;
+  gap: 1rem;
+}
+
+.LogoHeader {
+  width: 400px;
+  height: 300px;
 }
 
 .Header {
   height: 10vh;
   width: 100%;
-  background: green;
-  
+  //background: green;
 }
 
 .Footer {
   height: 5vh;
   width: 100%;
-  background: blue;
+  //background: blue;
 }
 
 .Layout {
   overflow: auto;
   width: 100%;
   height: 85vh;
-  border: 2px solid orange;
-  background: purple;
+  //border: 2px solid orange;
+  //background: purple;
 }

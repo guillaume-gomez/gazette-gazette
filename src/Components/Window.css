@@ -18,3 +18,8 @@
   justify-content: center;
   background: white;
 }
+
+.window-image {
+  max-width: 100%;
+  height: auto;
+}

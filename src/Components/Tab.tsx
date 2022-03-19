@@ -1,16 +1,16 @@
 import React from 'react';
 import "./Tab.css";
+import Button from "./Button";
 
 interface TabInterface {
   onClick: () => void;
-  name: string
+  name: string;
+  disabled: boolean
 }
 
-function Tab({ name, onClick } : TabInterface) {
+function Tab({ name, onClick, disabled } : TabInterface) {
   return (
-    <div className="Tab-container" onClick={onClick}>
-      {name}
-    </div>
+    <Button onClick={onClick} label={name} disabled={disabled}/>
   );
 }
 
