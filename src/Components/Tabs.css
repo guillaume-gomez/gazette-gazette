@@ -5,7 +5,7 @@
   width: calc(100% - 12px);
   height: calc(100% - 12px);
   background: var(--primary-color);
-  padding-left: 0.25rem;
+  padding: 4px;
   gap: 0.25rem;
   flex-wrap: wrap;
   overflow: auto;
