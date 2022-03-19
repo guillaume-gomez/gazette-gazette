@@ -1,3 +1,9 @@
+:root {
+  --primary-color:  #3181ca;
+  --primary-darker-color: #42519a;
+  --white-color: white;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -11,18 +17,27 @@
 }
 
 .LogoHeader {
-  width: 400px;
-  height: 300px;
+  position: absolute;
+  background: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  left: 80px;
+  color: var(--white-color);
+  width: 200px;
+  height: 8vh;
 }
 
 .Header {
-  height: 10vh;
+  position: relative;
+  height: 8vh;
   width: 100%;
   //background: green;
 }
 
 .Footer {
-  height: 5vh;
+  height: 7vh;
   width: 100%;
   //background: blue;
 }
@@ -33,4 +48,9 @@
   height: 85vh;
   //border: 2px solid orange;
   //background: purple;
+}
+
+.border-primary {
+  border: 6px solid var(--primary-darker-color);
+  border-radius: 6px;
 }

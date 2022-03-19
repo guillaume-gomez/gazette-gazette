@@ -1,6 +1,4 @@
 .toolbar-container {
-  border: 6px solid #42519a;
-  border-radius: 6px;
   min-height: 50px;
 }
 
@@ -10,9 +8,9 @@
   flex-direction: row;
   justify-content: flex-end;
   gap: 1rem;
-  background: #3181ca;
-  color: #42519a ;
-  border-bottom: 2px solid #42519a;
+  background: var(--primary-color);
+  color: var(--primary-darker-color);
+  border-bottom: 2px solid var(--primary-darker-color);
 }
 
 .toolbar-bottom {

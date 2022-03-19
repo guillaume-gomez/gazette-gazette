@@ -40,7 +40,11 @@ function App() {
   return (
     <body className="App">
       <header className="Header" >
-        <Toolbar label="000 - Canard //"/>
+        <div className="LogoHeader border-primary">
+          Gazette !
+          Gazette !
+        </div>
+        <Toolbar label="000 - Canard //" disabled={true}/>
       </header>
       <WindowManager.Provider>
         <main className="Layout">

@@ -6,7 +6,7 @@ import "./Tabs.css";
 function Tabs() {
   const { contentsState, openWindow, closeWindow } = WindowManager.useContainer();
   return (
-    <div className="tabs-container">
+    <div className="tabs-container border-primary">
     {
       contentsState.map(({name, show}, index) => (
         <Tab key={index} name={name} disabled={!show}  onClick={() => show ? closeWindow(index) : openWindow(index) } />

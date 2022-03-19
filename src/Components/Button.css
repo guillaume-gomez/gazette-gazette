@@ -1,7 +1,7 @@
 .button-container {
-  background: #42519a;
+  background: var(--primary-darker-color);
   border-radius: 6px;
-  color: #FFFFFF;
+  color: var(--white-color);
   border: none;
   text-align: center;
   text-decoration: none;
@@ -14,7 +14,7 @@
 
 .button-container:hover {
   background-color: #00519a;
-  color: white;
+
 }
 
 .button-disabled {
@@ -23,7 +23,7 @@
 }
 
 .button-container:active {
-  background-color: #42519a;
+  background-color: var(--primary-darker-color);
   box-shadow: 2px 2px #666;
   transform: translateY(1px);
 }
