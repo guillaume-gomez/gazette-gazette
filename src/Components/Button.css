@@ -1,4 +1,29 @@
 .button-container {
   background: #42519a;
+  border-radius: 6px;
   color: #FFFFFF;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  box-shadow: 2px 2px #00519a;
+
+}
+
+.button-container:hover {
+  background-color: #00519a;
+  color: white;
+}
+
+.button-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button-container:active {
+  background-color: #42519a;
+  box-shadow: 2px 2px #666;
+  transform: translateY(1px);
 }

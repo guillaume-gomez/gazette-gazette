@@ -1,16 +1,31 @@
 .App {
-  background: green;
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
   border: 2px solid red;
+  height: 100vh;
+  max-width: 90%;
+  margin: auto;
+}
+
+.Header {
+  height: 10vh;
+  width: 100%;
+  background: green;
+  
+}
+
+.Footer {
+  height: 5vh;
+  width: 100%;
+  background: blue;
 }
 
 .Layout {
-  max-width: 90%;
+  overflow: auto;
+  width: 100%;
+  height: 85vh;
   border: 2px solid orange;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  background: purple;
 }

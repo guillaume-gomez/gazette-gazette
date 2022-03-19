@@ -3,17 +3,23 @@ import Button from "./Button";
 import "./Toolbar.css";
 
 interface ToolbarInterface {
-  children?: React.ReactNode;
+  minimize?: () => void;
+  maximize?: () => void;
 }
-function Toolbar({children} : ToolbarInterface) {
+function Toolbar({ minimize, maximize } : ToolbarInterface) {
+
+  function action() {
+    console.log("to defined")
+  }
+
   return (
     <div className="toolbar-container">
       <div className="toolbar-top">
-        <div>000 - Canard //</div>
+        <span>000 - Canard //</span>
         <div className="buttons-container">
-          <Button icon={"+"} />
-          <Button icon={"-"}/>
-          <Button icon={"X"}/>
+          <Button icon={"-"} onClick={() => minimize && minimize()} />
+          <Button icon={"+"} onClick={() => maximize && maximize()} />
+          <Button icon={"X"} onClick={action} />
         </div>
       </div>
       <div className="toolbar-bottom">

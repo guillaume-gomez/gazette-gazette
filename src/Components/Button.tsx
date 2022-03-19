@@ -3,10 +3,12 @@ import "./Button.css";
 
 interface ButtonInterface {
   icon: React.ReactNode;
+  onClick: () => void;
 }
-function Button({icon} : ButtonInterface) {
+
+function Button({ icon, onClick } : ButtonInterface) {
   return (
-    <button className="button-container">
+    <button className="button-container" onClick={onClick}>
       {icon}
     </button>
   );
