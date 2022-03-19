@@ -4,18 +4,18 @@ import Toolbar from "./Toolbar"
 ;
 
 interface WindowInterface {
-  minHeight?: number;
-  backgroundColor: string;
-  children?: React.ReactNode;
+  publicUrl: string;
 }
 
 const footerHeight = 30;
-function Window({minHeight = 0, backgroundColor, children} : WindowInterface) {
+function Window({publicUrl} : WindowInterface) {
   return (
-    <div className="window-container" style={{ minHeight }}>
-      <Toolbar />
-      <div className="window-content" style={{ backgroundColor }}>
-        {children}
+    <div className="window-container">
+      <div className="window-header">
+        <Toolbar />
+      </div>
+      <div className="window-content">
+        <img src={process.env.PUBLIC_URL + publicUrl} />
       </div>
     </div>
   );

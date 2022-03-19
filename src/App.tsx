@@ -11,9 +11,12 @@ function App() {
       </header>
       <body className="Layout">
         <Toolbar />
-        <Window backgroundColor="white">
-          <img src={process.env.PUBLIC_URL + '/sample1.jpg'} />
-        </Window>
+        <Window publicUrl={'/sample1.jpg'} />
+        <Window publicUrl={'/sample2.jpg'} />
+        <Window publicUrl={'/sample3.jpg'} />
+        <Window publicUrl={'/sample4.jpg'} />
+        <Window publicUrl={'/sample5.jpg'} />
+        <Window publicUrl={'/sample3.jpg'} />
       </body>
     </div>
   );
