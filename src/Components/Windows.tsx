@@ -5,22 +5,21 @@ import Window from "./Window";
 import "./Windows.css";
 
 function Windows() {
-  const { contentsState, openWindow, closeWindow } = WindowManager.useContainer();
+  const { contentsState, toggleShow, toggleFullscreen } = WindowManager.useContainer();
   const constraintsRef = useRef(null);
 
   return (
     <div className="windows-container">
       <motion.div className="drag-area" ref={constraintsRef} />
     {
-      contentsState.map(({url, show, name}, index) => (
-        show && 
+      contentsState.map( (contentState, index) => (
+        contentState.show &&
         <motion.div className="dot" drag dragConstraints={constraintsRef}>
         <Window
           key={index}
-          label={name}
-          maximize={()=> openWindow(index)}
-          minimize={()=> closeWindow(index)}
-          publicUrl={url}
+          toggleShow={()=> toggleShow(index)}
+          toggleFullscreen={()=> toggleFullscreen(index)}
+          windowContent={contentState}
         />
         </motion.div>
        )
