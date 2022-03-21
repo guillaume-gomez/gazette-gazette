@@ -12,7 +12,7 @@ function Windows() {
     <div className="windows-container">
       <motion.div className="drag-area" ref={constraintsRef} />
     {
-      contentsState.map(({url, show, name, left}, index) => (
+      contentsState.map(({url, show, name}, index) => (
         show && 
         <motion.div className="dot" drag dragConstraints={constraintsRef}>
         <Window
