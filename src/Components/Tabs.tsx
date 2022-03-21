@@ -9,7 +9,7 @@ function Tabs() {
     <div className="tabs-container border-primary">
     {
       contentsState.map(({name, show}, index) => (
-        <Tab key={index} name={name} disabled={!show}  onClick={() => toggleShow(index) } />
+        <Tab key={index} name={name} disabled={show}  onClick={() => toggleShow(index) } />
        )
       )
     }

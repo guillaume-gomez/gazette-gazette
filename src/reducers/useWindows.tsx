@@ -23,7 +23,7 @@ function useWindows(initialState = 0) : useWindowsInterface {
   }
 
   function toggleFullscreen(indexWindowState: number) {
-    toggleGeneric(indexWindowState, "show");
+    toggleGeneric(indexWindowState, "fullscreen");
   }
 
   function toggleGeneric(indexWindowState: number, label: keyof ContentInterface) {
