@@ -34,15 +34,14 @@ function Windows() {
         <motion.div className="drag-area" ref={constraintsRef} />
       {
         contentsState.map( (contentState, index) => (
-          contentState.show &&
-          <motion.div className="dot" drag dragConstraints={constraintsRef}>
           <Window
             key={index}
             toggleShow={()=> toggleShow(index)}
             toggleFullscreen={()=> toggleFullscreen(index)}
             windowContent={contentState}
+            dragConstraints={constraintsRef}
           />
-          </motion.div>
+
          )
         )
       }

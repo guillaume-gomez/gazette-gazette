@@ -1,4 +1,6 @@
 .window-container {
+  position: absolute;
+  background: red;
  }
 
 .window-content {
@@ -22,3 +24,11 @@
   max-width: 100%;
   height: auto;
 }
+
+
+@media only screen and (max-width: 768px) {
+  .window-container {
+    position: static;
+  }
+}
+
