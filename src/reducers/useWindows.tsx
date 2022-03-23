@@ -10,8 +10,8 @@ interface useWindowsInterface {
 
 const contentStateDefault = [
   { url: '/sample1.jpg', name: "sample 1", show: true, fullscreen: false },
-  { url: '/sample2.jpg', name: "sample 2", show: true, fullscreen: false },
-  { url: '/sample3.jpg', name: "sample 3", show: true, fullscreen: false },
+/*  { url: '/sample2.jpg', name: "sample 2", show: true, fullscreen: false },
+  { url: '/sample3.jpg', name: "sample 3", show: true, fullscreen: false },*/
 ]
 
 
