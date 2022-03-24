@@ -13,12 +13,13 @@ interface WindowInterface {
 }
 
 const variantsFullscreen = {
-  fullscreen: { top:0, left: 0, width: "100%", maxWidth: "4000px" },
-  fullscreenClosed: { width: "100%", maxWidth: "400px" },
+  fullscreen: { top: 0, left:0, right: 0, x: 0, y: 0 },
+  fullscreenClosed: { top: 200, left: 200, right: "calc(100% - 400px)"  },
   initial: { top: 200, left: 200, opacity: 1 },
-  close: { width: "0%", opacity: 0 },
-  open: { width: "100%", maxWidth: "400px", opacity: 1}
+  close: { width: "0%", opacity: 0, scale: 0 },
+  open: { width: "100%", maxWidth: "400px", scale: 1, opacity: 1}
 }
+
 
 function Window({ toggleShow, toggleFullscreen, dragConstraints, windowContent: { url, name, fullscreen, show } } : WindowInterface) {
   const [variant, setVariant] = useState<string>("initial");
@@ -45,14 +46,14 @@ function Window({ toggleShow, toggleFullscreen, dragConstraints, windowContent: 
       animate={variant}
       variants={variantsFullscreen}
       initial={"initial"}
-      drag dragConstraints={dragConstraints}
+      drag={variant !== "fullscreen"} dragConstraints={dragConstraints}
     >
       <div className="window-header">
         <Toolbar minimize={toggleShow} maximize={toggleFullscreen} label={name} />
       </div>
-     {/* <div className="window-content">
+      <div className="window-content">
         <img className="window-image" src={process.env.PUBLIC_URL + url} />
-      </div>*/}
+      </div>
     </motion.div>
   );
 }
