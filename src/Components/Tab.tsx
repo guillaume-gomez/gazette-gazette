@@ -10,7 +10,7 @@ interface TabInterface {
 
 function Tab({ name, onClick, disabled } : TabInterface) {
   return (
-    <Button onClick={onClick} label={name} disabled={disabled}/>
+    <Button onClick={() => !disabled && onClick()} label={name} disabled={disabled} />
   );
 }
 
