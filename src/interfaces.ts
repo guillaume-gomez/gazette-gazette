@@ -1,6 +1,7 @@
+export type WindowStateType = "opened" | "closed" | "fullscreen";
+
 export interface ContentInterface {
   url: string;
   name: string;
-  show: boolean;
-  fullscreen: boolean
+  windowState: WindowStateType;
 }

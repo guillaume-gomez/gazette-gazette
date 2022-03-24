@@ -1,42 +1,34 @@
 import React, { useState } from "react"
 import { createContainer } from "unstated-next"
-import { ContentInterface } from "../interfaces";
+import { ContentInterface, WindowStateType } from "../interfaces";
 
 interface useWindowsInterface {
   contentsState: ContentInterface[];
-  toggleShow: (index: number) => void;
-  toggleFullscreen: (index: number) => void;
+  changeWindowState: (index: number, value: WindowStateType) => void;
 }
 
-const contentStateDefault = [
-  { url: '/sample1.jpg', name: "sample 1", show: true, fullscreen: false },
-/*  { url: '/sample2.jpg', name: "sample 2", show: true, fullscreen: false },
-  { url: '/sample3.jpg', name: "sample 3", show: true, fullscreen: false },*/
+const contentStateDefault : ContentInterface[]  = [
+  { url: '/sample1.jpg', name: "sample 1", windowState: "opened" },
+  { url: '/sample2.jpg', name: "sample 2", windowState: "opened" },
+  { url: '/sample3.jpg', name: "sample 3", windowState: "opened" },
 ]
 
 
 function useWindows(initialState = 0) : useWindowsInterface {
   const [contentsState, setContentsState] = useState<ContentInterface[]>(contentStateDefault);
 
-  function toggleShow(indexWindowState: number) {
-    toggleGeneric(indexWindowState, "show");
-  }
 
-  function toggleFullscreen(indexWindowState: number) {
-    toggleGeneric(indexWindowState, "fullscreen");
-  }
-
-  function toggleGeneric(indexWindowState: number, label: keyof ContentInterface) {
+  function changeWindowState(indexWindowState: number, newState: WindowStateType) {
     const newWindowsState = contentsState.map((contentState, index) => {
         if(indexWindowState === index) {
-          return { ...contentState, [label]: !contentState[label] };
+          return { ...contentState, windowState: newState };
         }
         return contentState;
     });
     setContentsState(newWindowsState);
   }
 
-  return { contentsState, toggleShow, toggleFullscreen }
+  return { contentsState, changeWindowState }
 }
 
 export default createContainer(useWindows)

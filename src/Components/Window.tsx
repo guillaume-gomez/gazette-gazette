@@ -1,55 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import "./Window.css";
 import Toolbar from "./Toolbar";
-import { ContentInterface } from "../interfaces";
+import { ContentInterface, WindowStateType } from "../interfaces";
 import { motion } from "framer-motion";
 
 
 interface WindowInterface {
-  toggleShow: () => void;
-  toggleFullscreen: () => void;
+  changeWindowState: (newState : WindowStateType) => void;
   windowContent: ContentInterface
   dragConstraints?: any
 }
 
-const variantsFullscreen = {
-  fullscreen: { top: 0, left:0, right: 0, x: 0, y: 0 },
-  fullscreenClosed: { top: 200, left: 200, right: "calc(100% - 400px)"  },
-  initial: { top: 200, left: 200, opacity: 1 },
-  close: { width: "0%", opacity: 0, scale: 0 },
-  open: { width: "100%", maxWidth: "400px", scale: 1, opacity: 1}
+const variants = {
+  fullscreen: { width: "100%", maxWidth: "100%", scale: 1, opacity: 1, top: 0, left:0, right: 0, x: 0, y: 0  },
+  close: { scale: 0, opacity: 0 },
+  open: { width: "100%", maxWidth: "25%", scale: 1, opacity: 1, top: 200, left: 200, right: "75%"}
 }
 
 
-function Window({ toggleShow, toggleFullscreen, dragConstraints, windowContent: { url, name, fullscreen, show } } : WindowInterface) {
-  const [variant, setVariant] = useState<string>("initial");
+function Window({ changeWindowState, dragConstraints, windowContent: { url, name, windowState } } : WindowInterface) {
+  const [variant, setVariant] = useState<string>("open");
 
   useEffect(() => {
-    if(!show) {
-      setVariant("close")
-    } else {
-      setVariant("open")
+    switch(windowState) {
+      case "opened":
+      default:
+        setVariant("open")
+      break;
+      case "closed":
+        setVariant("close")
+      break;
+      case "fullscreen":
+        setVariant("fullscreen")
+      break;
     }
-  }, [show, setVariant])
-
-  useEffect(() => {
-    if(!fullscreen) {
-      setVariant("fullscreenClosed")
-    } else {
-      setVariant("fullscreen")
-    }
-  }, [fullscreen, setVariant])
-
+  }, [windowState, setVariant])
 
   return (
     <motion.div className="window-container"
       animate={variant}
-      variants={variantsFullscreen}
-      initial={"initial"}
+      variants={variants}
+      initial={"open"}
       drag={variant !== "fullscreen"} dragConstraints={dragConstraints}
     >
       <div className="window-header">
-        <Toolbar minimize={toggleShow} maximize={toggleFullscreen} label={name} />
+        <Toolbar
+          close={() =>  changeWindowState("closed")}
+          minimize={() => changeWindowState("opened")}
+          maximize={() => changeWindowState("fullscreen")}
+          label={name}
+        />
       </div>
       <div className="window-content">
         <img className="window-image" src={process.env.PUBLIC_URL + url} />

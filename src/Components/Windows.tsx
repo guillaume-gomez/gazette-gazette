@@ -7,20 +7,19 @@ import Window from "./Window";
 import "./Windows.css";
 
 function Windows() {
-  const { contentsState, toggleShow, toggleFullscreen } = WindowManager.useContainer();
+  const { contentsState, changeWindowState } = WindowManager.useContainer();
   const isMedium = useMediaQuery('(max-width: 768px)');
-  const constraintsRef = useRef(null);
+  const constraintRef = useRef<HTMLDivElement>(null);
 
   if(isMedium) {
     return (
       <div className="windows-container">
         {
           contentsState.map( (contentState, index) => (
-            contentState.show &&
+            contentState.windowState !== "closed" &&
                   <Window
                     key={index}
-                    toggleShow={()=> toggleShow(index)}
-                    toggleFullscreen={()=> toggleFullscreen(index)}
+                    changeWindowState={(value)=> changeWindowState(index, value)}
                     windowContent={contentState}
                   />
             )
@@ -31,21 +30,22 @@ function Windows() {
   } else {
     return (
       <div className="windows-container">
-        <motion.div className="drag-area" ref={constraintsRef} />
+      <motion.div className="drag-area" ref={constraintRef} >
       {
         contentsState.map( (contentState, index) => (
-          <Window
-            key={index}
-            toggleShow={()=> toggleShow(index)}
-            toggleFullscreen={()=> toggleFullscreen(index)}
-            windowContent={contentState}
-            dragConstraints={constraintsRef}
-          />
+            <Window
+              key={index}
+              changeWindowState={(value)=> changeWindowState(index, value)}
+              windowContent={contentState}
+              dragConstraints={constraintRef}
+            />
 
          )
         )
       }
+      </motion.div>
       </div>
+
     );
   }
 

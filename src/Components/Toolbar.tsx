@@ -5,10 +5,11 @@ import "./Toolbar.css";
 interface ToolbarInterface {
   minimize?: () => void;
   maximize?: () => void;
+  close?: () => void;
   label: string;
   disabled?: boolean
 }
-function Toolbar({ minimize, maximize, label, disabled = false } : ToolbarInterface) {
+function Toolbar({ minimize, maximize, close, label, disabled = false } : ToolbarInterface) {
 
   function action() {
     console.log("to defined")
@@ -21,7 +22,7 @@ function Toolbar({ minimize, maximize, label, disabled = false } : ToolbarInterf
         <div className="buttons-container">
           <Button icon={"-"} onClick={() => minimize && minimize()} disabled={disabled}  />
           <Button icon={"+"} onClick={() => maximize && maximize()} disabled={disabled} />
-          <Button icon={"X"} onClick={action} disabled={disabled} />
+          <Button icon={"X"} onClick={() => close && close()} disabled={disabled} />
         </div>
       </div>
       <div className="toolbar-bottom">
