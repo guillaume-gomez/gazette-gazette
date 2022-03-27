@@ -11,20 +11,19 @@ interface WindowInterface {
   dragConstraints?: any
 }
 
-const variants = {
-  fullscreen: { width: "100%", maxWidth: "100%", scale: 1, opacity: 1, top: 0, left:0, right: 0, x: 0, y: 0  },
-  close: { scale: 0, opacity: 0 },
-  open: { width: "100%", maxWidth: "25%", scale: 1, opacity: 1, top: 200, left: 200, right: "75%"}
-}
 
+function Window({ changeWindowState, dragConstraints, windowContent: { url, name, windowState, originalX, originalY } } : WindowInterface) {
+  const [variant, setVariant] = useState<string>("initial");
 
-function Window({ changeWindowState, dragConstraints, windowContent: { url, name, windowState } } : WindowInterface) {
-  const [variant, setVariant] = useState<string>("open");
-
+  const variants = {
+    fullscreen: { width: "100%", maxWidth: "100%", scale: 1, opacity: 1, top: 0, left:0, right: 0, x: 0, y: 0  },
+    close: { scale: 0, opacity: 0, maxWidth: "100%" },
+    open: { width: "100%", maxWidth: "25%", scale: 1, opacity: 1, right: "75%"},
+    initial: { width: "100%", maxWidth: "25%", scale: 1, opacity: 1, top: originalY, left: originalX, right: "75%"}
+  }
   useEffect(() => {
     switch(windowState) {
       case "opened":
-      default:
         setVariant("open")
       break;
       case "closed":
@@ -33,6 +32,9 @@ function Window({ changeWindowState, dragConstraints, windowContent: { url, name
       case "fullscreen":
         setVariant("fullscreen")
       break;
+      default:
+        setVariant("initial");
+      break;
     }
   }, [windowState, setVariant])
 
@@ -40,7 +42,7 @@ function Window({ changeWindowState, dragConstraints, windowContent: { url, name
     <motion.div className="window-container"
       animate={variant}
       variants={variants}
-      initial={"open"}
+      initial={"initial"}
       drag={variant !== "fullscreen"} dragConstraints={dragConstraints}
     >
       <div className="window-header">
