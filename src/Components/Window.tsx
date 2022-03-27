@@ -3,6 +3,7 @@ import "./Window.css";
 import Toolbar from "./Toolbar";
 import { ContentInterface, WindowStateType } from "../interfaces";
 import { motion } from "framer-motion";
+import useMediaQuery from "../reducers/useMediaQuery";
 
 
 interface WindowInterface {
@@ -14,6 +15,7 @@ interface WindowInterface {
 
 function Window({ changeWindowState, dragConstraints, windowContent: { url, name, windowState, originalX, originalY } } : WindowInterface) {
   const [variant, setVariant] = useState<string>("initial");
+  const isMedium = useMediaQuery('(max-width: 768px)');
 
   const variants = {
     fullscreen: { width: "100%", maxWidth: "100%", scale: 1, opacity: 1, top: 0, left:0, right: 0, x: 0, y: 0  },
@@ -36,7 +38,35 @@ function Window({ changeWindowState, dragConstraints, windowContent: { url, name
         setVariant("initial");
       break;
     }
-  }, [windowState, setVariant])
+  }, [windowState, setVariant]);
+
+  function windowContent() {
+    return (
+      <>
+        <div className="window-header">
+          <Toolbar
+            close={() =>  changeWindowState("closed")}
+            minimize={() => changeWindowState("opened")}
+            maximize={() => changeWindowState("fullscreen")}
+            label={name}
+          />
+        </div>
+        <div className="window-content">
+          <img className="window-image" src={process.env.PUBLIC_URL + url} />
+        </div>
+      </>
+    );
+  }
+
+  if(isMedium) {
+    return (
+      <div className="window-container"
+      >
+        {windowContent()}
+      </div>
+    );
+  }
+
 
   return (
     <motion.div className="window-container"
@@ -45,17 +75,7 @@ function Window({ changeWindowState, dragConstraints, windowContent: { url, name
       initial={"initial"}
       drag={variant !== "fullscreen"} dragConstraints={dragConstraints}
     >
-      <div className="window-header">
-        <Toolbar
-          close={() =>  changeWindowState("closed")}
-          minimize={() => changeWindowState("opened")}
-          maximize={() => changeWindowState("fullscreen")}
-          label={name}
-        />
-      </div>
-      <div className="window-content">
-        <img className="window-image" src={process.env.PUBLIC_URL + url} />
-      </div>
+      {windowContent()}
     </motion.div>
   );
 }
