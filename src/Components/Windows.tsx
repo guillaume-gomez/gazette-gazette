@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from "framer-motion"
 import WindowManager from "../reducers/useWindows";
-import useMediaQuery from "../reducers/useMediaQuery"
+import useMediaQuery from "../reducers/useMediaQuery";
 
 import Window from "./Window";
 import "./Windows.css";
@@ -19,6 +19,7 @@ function Windows() {
   const isMedium = useMediaQuery('(max-width: 768px)');
   const constraintRef = useRef<HTMLDivElement>(null);
 
+  
   if(isMedium) {
     return (
       <div className="windows-container">
