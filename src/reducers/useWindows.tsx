@@ -7,15 +7,15 @@ interface useWindowsInterface {
   changeWindowState: (index: number, value: WindowStateType) => void;
 }
 
-/*function randPosition() : [string, string] {
-  const x = Math.floor(75 * Math.random());
-  const y = Math.floor(75 * Math.random());
-}*/
+function randPosition() : string {
+  const number = Math.floor(75 * Math.random());
+  return `${number}%`;
+}
 
 const contentStateDefault : ContentInterface[]  = [
-  { url: '/sample1.jpg', name: "sample 1", windowState: "opened", originalX: 10, originalY: 400 },
-  { url: '/sample2.jpg', name: "sample 2", windowState: "opened", originalX: "75%", originalY: "75%" },
-  { url: '/sample3.jpg', name: "sample 3", windowState: "opened", originalX: 1000, originalY: 250 },
+  { url: '/sample1.jpg', name: "sample 1", windowState: "opened", originalX: randPosition(), originalY: randPosition() },
+  { url: '/sample2.jpg', name: "sample 2", windowState: "opened", originalX: randPosition(), originalY: randPosition() },
+  { url: '/sample3.jpg', name: "sample 3", windowState: "opened", originalX: randPosition(), originalY: randPosition() },
 ]
 
 
