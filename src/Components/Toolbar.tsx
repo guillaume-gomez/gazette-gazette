@@ -26,7 +26,6 @@ function Toolbar({ minimize, maximize, close, label, disabled = false } : Toolba
         </div>
       </div>
       <div className="toolbar-bottom">
-        TOO
       </div>
     </div>
   );
