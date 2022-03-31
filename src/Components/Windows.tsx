@@ -42,9 +42,8 @@ function Windows() {
       <motion.div className="drag-area" ref={constraintRef} >
       {
         contentsState.map( (contentState, index) => (
-            <motion.span  style={{width: "100%", height:"100%"}} initial="initial" custom={index} animate="visible" variants={variants} >
+            <motion.span  key={index} style={{width: "100%", height:"100%"}} initial="initial" custom={index} animate="visible" variants={variants} >
               <Window
-                key={index}
                 changeWindowState={(value)=> changeWindowState(index, value)}
                 windowContent={contentState}
                 dragConstraints={constraintRef}
