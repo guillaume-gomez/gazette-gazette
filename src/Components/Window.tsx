@@ -8,12 +8,19 @@ import useMediaQuery from "../reducers/useMediaQuery";
 
 interface WindowInterface {
   changeWindowState: (newState : WindowStateType) => void;
-  windowContent: ContentInterface
-  dragConstraints?: any
+  windowContent: ContentInterface;
+  onClickWindow?: () => void;
+  dragConstraints?: any;
 }
 
 
-function Window({ changeWindowState, dragConstraints, windowContent: { url, name, windowState, originalX, originalY } } : WindowInterface) {
+function Window({
+    changeWindowState,
+    onClickWindow,
+    dragConstraints,
+    windowContent: { url, name, windowState, originalX, originalY
+  }
+} : WindowInterface) {
   const [variant, setVariant] = useState<string>("initial");
   const isMedium = useMediaQuery('(max-width: 768px)');
 
@@ -43,7 +50,7 @@ function Window({ changeWindowState, dragConstraints, windowContent: { url, name
   function windowContent() {
     return (
       <>
-        <div className="window-header">
+        <div className="window-header" onClick={() => { onClickWindow && onClickWindow()} }>
           <Toolbar
             close={() =>  changeWindowState("closed")}
             minimize={() => changeWindowState("opened")}
