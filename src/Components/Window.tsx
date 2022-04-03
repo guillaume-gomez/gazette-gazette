@@ -18,7 +18,7 @@ function Window({
     changeWindowState,
     onClickWindow,
     dragConstraints,
-    windowContent: { url, name, windowState, originalX, originalY
+    windowContent: { url, name, windowState, originalX, originalY, order
   }
 } : WindowInterface) {
   const [variant, setVariant] = useState<string>("initial");
@@ -80,6 +80,7 @@ function Window({
       animate={variant}
       variants={variants}
       initial={"initial"}
+      style={{ zIndex: order }}
       drag={variant !== "fullscreen"} dragConstraints={dragConstraints}
     >
       {windowContent()}

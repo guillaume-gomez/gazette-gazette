@@ -6,4 +6,5 @@ export interface ContentInterface {
   windowState: WindowStateType;
   originalX: number | string;
   originalY: number | string;
+  order: number;
 }

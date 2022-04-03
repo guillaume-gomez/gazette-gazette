@@ -14,9 +14,9 @@ function randPosition() : string {
 }
 
 const contentStateDefault : ContentInterface[]  = [
-  { url: '/sample1.jpg', name: "sample 1", windowState: "opened", originalX: randPosition(), originalY: randPosition() },
-  { url: '/sample2.jpg', name: "sample 2", windowState: "opened", originalX: randPosition(), originalY: randPosition() },/*
-  { url: '/sample3.jpg', name: "sample 3", windowState: "opened", originalX: randPosition(), originalY: randPosition() },*/
+  { url: '/sample1.jpg', name: "sample 1", windowState: "opened", originalX: randPosition(), originalY: randPosition(), order: 1 },
+  { url: '/sample2.jpg', name: "sample 2", windowState: "opened", originalX: randPosition(), originalY: randPosition(), order: 2 },/*
+  { url: '/sample3.jpg', name: "sample 3", windowState: "opened", originalX: randPosition(), originalY: randPosition(), order: 3 },*/
 ]
 
 
@@ -32,10 +32,14 @@ function useWindows(initialState = 0) : useWindowsInterface {
           return contentState;
         }
     });
-    if(newState === "opened" || newState == "fullscreen") {
-      setContentsState(moveFront(newWindowsState, indexWindowState));
+    if(newState === "opened" || newState ===  "fullscreen") {
+      const moveFrontWindowsState = moveFront(newWindowsState, indexWindowState);
+      const reorderWinowsState = reorder(moveFrontWindowsState);
+      setContentsState(reorderWinowsState);
     } else {
-      setContentsState(moveBack(newWindowsState, indexWindowState));
+      const moveBackWindowsState = moveBack(newWindowsState, indexWindowState);
+      const reorderWinowsState = reorder(moveBackWindowsState);
+      setContentsState(reorderWinowsState);
     }
   }
 
@@ -47,9 +51,14 @@ function useWindows(initialState = 0) : useWindowsInterface {
     return copyContentState;
   }
 
-  function onClickWindow(indexWindowState: number) {
-    console.log("mahcd");
-    setContentsState(moveFront(contentsState, indexWindowState));
+  function reorder(contentStateOrdered: ContentInterface[]) : ContentInterface[] {
+      return contentsState.map((contentState) => {
+        const index = contentStateOrdered.findIndex(c => c.name === contentState.name);
+        if(index !== -1) {
+          return { ...contentState, order: (index + 1) };
+        }
+        throw "something went wrong in the reorder function"
+      });
   }
 
   function moveBack(contentStateModified: ContentInterface[], indexWindowState: number): ContentInterface[] {
@@ -58,6 +67,13 @@ function useWindows(initialState = 0) : useWindowsInterface {
     const [item] = copyContentState.splice(indexWindowState, 1);
     copyContentState.unshift(item);
     return copyContentState;
+  }
+
+  function onClickWindow(indexWindowState: number) {
+    const moveFrontWindowsState = moveFront(contentsState, indexWindowState);
+    const reorderWinowsState = reorder(moveFrontWindowsState);
+    console.log(reorderWinowsState)
+    setContentsState(reorderWinowsState);
   }
 
   return { contentsState, changeWindowState, onClickWindow }
