@@ -1,5 +1,6 @@
 :root {
   --primary-color:  #3181ca;
+  --primary-color-alpha: #3181ca33 ;
   --primary-darker-color: #42519a;
   --white-color: white;
 }
@@ -47,8 +48,6 @@
   overflow: auto;
   width: 100%;
   height: 85vh;
-  //border: 2px solid orange;
-  //background: purple;
 }
 
 @media only screen and (max-width: 768px) {
@@ -64,4 +63,8 @@
 .border-primary {
   border: 6px solid var(--primary-darker-color);
   border-radius: 6px;
+}
+
+.border-height {
+  height:  calc(100% - 12px);
 }

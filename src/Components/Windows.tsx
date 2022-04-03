@@ -38,24 +38,25 @@ function Windows() {
     );
   } else {
     return (
-      <div className="windows-container">
-      <motion.div className="drag-area" ref={constraintRef} >
-      {
-        contentsState.map( (contentState, index) => (
-            <motion.span  key={index} style={{width: "100%", height:"100%"}} initial="initial" custom={index} animate="visible" variants={variants} >
-              <Window
-                changeWindowState={(value)=> changeWindowState(index, value)}
-                windowContent={contentState}
-                dragConstraints={constraintRef}
-              />
-            </motion.span>
+      <div className="border-primary border-height">
+        <div className="windows-container">
+          <motion.div className="drag-area" ref={constraintRef} >
+          {
+            contentsState.map( (contentState, index) => (
+                <motion.span  key={index} style={{width: "100%", height:"100%"}} initial="initial" custom={index} animate="visible" variants={variants} >
+                  <Window
+                    changeWindowState={(value)=> changeWindowState(index, value)}
+                    windowContent={contentState}
+                    dragConstraints={constraintRef}
+                  />
+                </motion.span>
 
-         )
-        )
-      }
-      </motion.div>
+             )
+            )
+          }
+          </motion.div>
+        </div>
       </div>
-
     );
   }
 
