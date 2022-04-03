@@ -1,32 +1,20 @@
 import React, { useState } from "react"
 import { createContainer } from "unstated-next"
 import { ContentInterface, WindowStateType } from "../interfaces";
+import { posts } from "./data";
 
 interface useWindowsInterface {
   contentsState: ContentInterface[];
   changeWindowState: (index: number, value: WindowStateType) => void;
 }
 
-function randPosition() : string {
-  const number = Math.floor(75 * Math.random());
-  return `${number}%`;
-}
-
-const contentStateDefault : ContentInterface[]  = [
-  { url: '/sample1.jpg', name: "sample 1", windowState: "opened", originalX: randPosition(), originalY: randPosition(), order: 1 },
-  { url: '/sample2.jpg', name: "sample 2", windowState: "opened", originalX: randPosition(), originalY: randPosition(), order: 2 },/*
-  { url: '/sample3.jpg', name: "sample 3", windowState: "opened", originalX: randPosition(), originalY: randPosition(), order: 3 },*/
-]
-
-
 function useWindows(initialState = 0) : useWindowsInterface {
-  const [contentsState, setContentsState] = useState<ContentInterface[]>(contentStateDefault);
+  const [contentsState, setContentsState] = useState<ContentInterface[]>(posts);
 
 
   function changeWindowState(indexWindowState: number, newState: WindowStateType) {
     const newWindowsState = contentsState.map((contentState, index) => {
         if(indexWindowState === index) {
-          console.log("ja rentre ")
           return { ...contentState, windowState: newState };
         }else {
           return contentState;
@@ -34,9 +22,7 @@ function useWindows(initialState = 0) : useWindowsInterface {
     });
     if(["opened","fullscreen", "clicked"].includes(newState)) {
       const moveFrontWindowsState = moveFront(newWindowsState, indexWindowState);
-      console.log(moveFrontWindowsState);
       const reorderWinowsState = reorder(newWindowsState, moveFrontWindowsState);
-      console.log(reorderWinowsState);
       setContentsState(reorderWinowsState);
     } else {
       const moveBackWindowsState = moveBack(newWindowsState, indexWindowState);
