@@ -9,14 +9,12 @@ import useMediaQuery from "../reducers/useMediaQuery";
 interface WindowInterface {
   changeWindowState: (newState : WindowStateType) => void;
   windowContent: ContentInterface;
-  onClickWindow?: () => void;
   dragConstraints?: any;
 }
 
 
 function Window({
     changeWindowState,
-    onClickWindow,
     dragConstraints,
     windowContent: { url, name, windowState, originalX, originalY, order
   }
@@ -50,11 +48,11 @@ function Window({
   function windowContent() {
     return (
       <>
-        <div className="window-header" onClick={() => { onClickWindow && onClickWindow()} }>
+        <div className="window-header" onClick={() => changeWindowState("clicked")}>
           <Toolbar
-            close={() =>  changeWindowState("closed")}
-            minimize={() => changeWindowState("opened")}
-            maximize={() => changeWindowState("fullscreen")}
+            close={(event) => { changeWindowState("closed"); event.stopPropagation() }}
+            minimize={(event) => { changeWindowState("opened"); event.stopPropagation() }}
+            maximize={(event) => { changeWindowState("fullscreen"); event.stopPropagation() }}
             label={name}
           />
         </div>

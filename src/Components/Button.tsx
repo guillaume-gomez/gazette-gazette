@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import "./Button.css";
 
 interface ButtonInterface {
   icon?: React.ReactNode;
   label?: string;
-  onClick: () => void;
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
 }
 

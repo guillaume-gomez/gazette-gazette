@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import Button from "./Button";
 import "./Toolbar.css";
 
 interface ToolbarInterface {
-  minimize?: () => void;
-  maximize?: () => void;
-  close?: () => void;
+  minimize?: (event : MouseEvent<HTMLButtonElement>) => void;
+  maximize?: (event: MouseEvent<HTMLButtonElement>) => void;
+  close?: (event: MouseEvent<HTMLButtonElement>) => void;
   label: string;
   disabled?: boolean
 }
@@ -20,9 +20,9 @@ function Toolbar({ minimize, maximize, close, label, disabled = false } : Toolba
       <div className="toolbar-top">
         <span>{label}</span>
         <div className="buttons-container">
-          <Button icon={"-"} onClick={() => minimize && minimize()} disabled={disabled}  />
-          <Button icon={"+"} onClick={() => maximize && maximize()} disabled={disabled} />
-          <Button icon={"X"} onClick={() => close && close()} disabled={disabled} />
+          <Button icon={"-"} onClick={(event) => minimize && minimize(event)} disabled={disabled}  />
+          <Button icon={"+"} onClick={(event) => maximize && maximize(event)} disabled={disabled} />
+          <Button icon={"X"} onClick={(event) => close && close(event)} disabled={disabled} />
         </div>
       </div>
       <div className="toolbar-bottom">

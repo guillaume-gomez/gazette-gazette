@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import "./Tab.css";
 import Button from "./Button";
 
 interface TabInterface {
-  onClick: () => void;
+  onClick: (event : MouseEvent<HTMLButtonElement>) => void;
   name: string;
   disabled: boolean
 }
 
 function Tab({ name, onClick, disabled } : TabInterface) {
   return (
-    <Button onClick={() => !disabled && onClick()} label={name} disabled={disabled} />
+    <Button onClick={(event) => !disabled && onClick(event)} label={name} disabled={disabled} />
   );
 }
 

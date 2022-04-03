@@ -1,4 +1,4 @@
-export type WindowStateType = "opened" | "closed" | "fullscreen";
+export type WindowStateType = "opened" | "closed" | "fullscreen" | "clicked";
 
 export interface ContentInterface {
   url: string;
