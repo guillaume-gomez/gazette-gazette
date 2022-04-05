@@ -8,6 +8,7 @@ function Tabs() {
   return (
     <div className="tabs-container border-primary">
     {
+      dskljdfskljdvfkljdfsklj
       contentsState.map(({name, windowState}, index) => (
         <Tab key={index} name={name} disabled={windowState !== "closed"}  onClick={() => changeWindowState(index, 'opened') } />
        )
