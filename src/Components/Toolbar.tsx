@@ -7,18 +7,26 @@ interface ToolbarInterface {
   maximize?: (event: MouseEvent<HTMLButtonElement>) => void;
   close?: (event: MouseEvent<HTMLButtonElement>) => void;
   label: string;
+  authorLink?: string
   disabled?: boolean
 }
-function Toolbar({ minimize, maximize, close, label, disabled = false } : ToolbarInterface) {
+function Toolbar({ minimize, maximize, close, label, authorLink, disabled = false } : ToolbarInterface) {
 
-  function action() {
-    console.log("to defined")
+  function renderLabel() {
+    if(authorLink) {
+      return (
+        <a href={authorLink} className="custom-link">
+          <span>{label}</span>
+        </a>
+      )
+    }
+    return <span>{label}</span>;
   }
 
   return (
     <div className="toolbar-container border-primary">
       <div className="toolbar-top">
-        <span>{label}</span>
+        {renderLabel()}
         <div className="buttons-container">
           <Button icon={"-"} onClick={(event) => minimize && minimize(event)} disabled={disabled}  />
           <Button icon={"+"} onClick={(event) => maximize && maximize(event)} disabled={disabled} />
