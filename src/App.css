@@ -19,7 +19,7 @@
 
 .LogoHeader {
   position: absolute;
-  background: red;
+  background: var(--white-color);
   display: flex;
   flex-direction: column;
   align-items: center;

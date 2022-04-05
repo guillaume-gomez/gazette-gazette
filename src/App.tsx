@@ -11,8 +11,7 @@ function App() {
     <body className="App">
       <header className="Header" >
         <div className="LogoHeader border-primary">
-          Gazette !
-          Gazette !
+          <img width="100%" src={process.env.PUBLIC_URL + "/gazette-logo.png"} />
         </div>
         <Toolbar label="000 - Canard //" disabled={true}/>
       </header>
