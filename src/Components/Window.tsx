@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, MouseEvent } from 'react';
 import "./Window.css";
 import Toolbar from "./Toolbar";
 import { ContentInterface, WindowStateType } from "../interfaces";
@@ -16,18 +16,18 @@ interface WindowInterface {
 function Window({
     changeWindowState,
     dragConstraints,
-    windowContent: { url, name, windowState, originalX, originalY, order
-  }
+    windowContent: { url, name, windowState, originalX, originalY, order, authorLink }
 } : WindowInterface) {
   const [variant, setVariant] = useState<string>("initial");
   const isMedium = useMediaQuery('(max-width: 768px)');
 
   const variants = {
-    fullscreen: { width: "100%", maxWidth: "100%", scale: 1, opacity: 1, top: 0, left:0, right: 0, x: 0, y: 0  },
-    close: { scale: 0, opacity: 0, maxWidth: "100%" },
-    open: { width: "100%", maxWidth: "25%", scale: 1, opacity: 1, right: "75%"},
-    initial: { width: "100%", maxWidth: "25%", scale: 1, opacity: 1, top: originalY, left: originalX, right: "75%"}
+    fullscreen: { x: 0, y: 0, width:"100%"},
+    closed: { scale: 0, opacity: 0 },
+    opened: { opacity: 1, scale: 1, width:"25%" },
+    initial: { x: originalX, y: originalY, scale: 1, opacity: 1, width:"25%" }
   }
+
   useEffect(() => {
     switch(windowState) {
       case "opened":
@@ -40,20 +40,45 @@ function Window({
         setVariant("fullscreen")
       break;
       default:
-        setVariant("initial");
+        setVariant("open");
       break;
     }
-  }, [windowState, setVariant]);
+ }, [windowState, setVariant]);
+
+
+
+  function minimize(event: MouseEvent<HTMLButtonElement>) {
+    console.log(windowState)
+    if(windowState !== "opened") {
+      changeWindowState("opened");
+      event.stopPropagation();
+    }
+  }
+
+  function maximize(event: MouseEvent<HTMLButtonElement>) {
+    if(windowState !== "fullscreen") {
+      changeWindowState("fullscreen");
+      event.stopPropagation();
+    }
+  }
+
+  function close(event: MouseEvent<HTMLButtonElement>) {
+    if(windowState !== "closed") {
+      changeWindowState("closed");
+      event.stopPropagation();
+    }
+  }
 
   function windowContent() {
     return (
       <>
         <div className="window-header" onClick={() => changeWindowState("clicked")}>
           <Toolbar
-            close={(event) => { changeWindowState("closed"); event.stopPropagation() }}
-            minimize={(event) => { changeWindowState("opened"); event.stopPropagation() }}
-            maximize={(event) => { changeWindowState("fullscreen"); event.stopPropagation() }}
+            close={close}
+            minimize={minimize}
+            maximize={maximize}
             label={name}
+            authorLink={authorLink}
           />
         </div>
         <div className="window-content">
@@ -65,13 +90,11 @@ function Window({
 
   if(isMedium) {
     return (
-      <div className="window-container"
-      >
+      <div className="window-container">
         {windowContent()}
       </div>
     );
   }
-
 
   return (
     <motion.div className="window-container"
@@ -79,7 +102,7 @@ function Window({
       variants={variants}
       initial={"initial"}
       style={{ zIndex: order }}
-      drag={variant !== "fullscreen"} dragConstraints={dragConstraints}
+      drag={windowState !== "fullscreen"} dragConstraints={dragConstraints}
     >
       {windowContent()}
     </motion.div>

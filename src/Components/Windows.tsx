@@ -18,7 +18,6 @@ function Windows() {
   const { contentsState, changeWindowState } = WindowManager.useContainer();
   const isMedium = useMediaQuery('(max-width: 768px)');
   const constraintRef = useRef<HTMLDivElement>(null);
-
   
   if(isMedium) {
     return (
