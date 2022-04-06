@@ -23,9 +23,6 @@
   color:  var(--primary-color--button);
 }
 
-.toolbar-bottom {
-  background: #FFFFFF;
-}
 
 .buttons-container {
   display: flex;
