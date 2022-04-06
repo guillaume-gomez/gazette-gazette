@@ -31,16 +31,16 @@ function Window({
   useEffect(() => {
     switch(windowState) {
       case "opened":
-        setVariant("open")
+        setVariant("opened")
       break;
       case "closed":
-        setVariant("close")
+        setVariant("closed")
       break;
       case "fullscreen":
         setVariant("fullscreen")
       break;
       default:
-        setVariant("open");
+        setVariant("opened");
       break;
     }
  }, [windowState, setVariant]);
