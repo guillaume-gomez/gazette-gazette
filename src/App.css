@@ -1,7 +1,8 @@
 :root {
-  --primary-color:  #3181ca;
+  --primary-color:  #82b4ff;
+  --primary-color--button: #0047b2;
   --primary-color-alpha: #3181ca33 ;
-  --primary-darker-color: #42519a;
+  --primary-darker-color: #337ff1;
   --white-color: white;
 }
 

@@ -10,13 +10,17 @@
   justify-content: flex-end;
   gap: 1rem;
   background: var(--primary-color);
-  color: var(--primary-darker-color);
+  color: var(--primary-color--button);
   border-bottom: 2px solid var(--primary-darker-color);
 }
 
 .custom-link {
   text-decoration: none;
-  color: var(--primary-darker-color);
+  color: var(--primary-color--button);
+}
+
+.span-no-link {
+  color:  var(--primary-color--button);
 }
 
 .toolbar-bottom {

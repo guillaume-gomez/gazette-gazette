@@ -20,7 +20,7 @@ function Toolbar({ minimize, maximize, close, label, authorLink, disabled = fals
         </a>
       )
     }
-    return <span>{label}</span>;
+    return <span className="span-no-link">{label}</span>;
   }
 
   return (

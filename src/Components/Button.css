@@ -1,5 +1,5 @@
 .button-container {
-  background: var(--primary-darker-color);
+  background: var(--primary-color--button);
   border-radius: 6px;
   color: var(--white-color);
   border: none;
