@@ -6,11 +6,17 @@ import { posts } from "./data";
 interface useWindowsInterface {
   contentsState: ContentInterface[];
   changeWindowState: (index: number, value: WindowStateType) => void;
+  onDragStart: (index: number) => void;
 }
 
 function useWindows(initialState = 0) : useWindowsInterface {
   const [contentsState, setContentsState] = useState<ContentInterface[]>(posts);
 
+  function onDragStart(indexWindowState: number) {
+    const moveFrontWindowsState = moveFront(contentsState, indexWindowState);
+    const reorderWinowsState = reorder(contentsState, moveFrontWindowsState);
+    setContentsState(reorderWinowsState);
+  }
 
   function changeWindowState(indexWindowState: number, newState: WindowStateType) {
     const newWindowsState = contentsState.map((contentState, index) => {
@@ -39,6 +45,7 @@ function useWindows(initialState = 0) : useWindowsInterface {
     return copyContentState;
   }
 
+
   function moveBack(contentStateModified: ContentInterface[], indexWindowState: number): ContentInterface[] {
     let copyContentState = contentStateModified.slice();
 
@@ -57,7 +64,7 @@ function useWindows(initialState = 0) : useWindowsInterface {
       });
   }
 
-  return { contentsState, changeWindowState }
+  return { contentsState, changeWindowState, onDragStart }
 }
 
 export default createContainer(useWindows)
