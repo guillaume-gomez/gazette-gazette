@@ -15,7 +15,7 @@ const variants = {
 }
 
 function Windows() {
-  const { contentsState, changeWindowState } = WindowManager.useContainer();
+  const { contentsState, changeWindowState, onDragStart } = WindowManager.useContainer();
   const isMedium = useMediaQuery('(max-width: 768px)');
   const constraintRef = useRef<HTMLDivElement>(null);
   
@@ -45,6 +45,7 @@ function Windows() {
                 <motion.span  key={index} style={{width: "100%", height:"100%"}} initial="initial" custom={index} animate="visible" variants={variants} >
                   <Window
                     changeWindowState={(value)=> changeWindowState(index, value)}
+                    onDragStart={() => onDragStart(index)}
                     windowContent={contentState}
                     dragConstraints={constraintRef}
                   />

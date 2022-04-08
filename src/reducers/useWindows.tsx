@@ -6,11 +6,17 @@ import { posts } from "./data";
 interface useWindowsInterface {
   contentsState: ContentInterface[];
   changeWindowState: (index: number, value: WindowStateType) => void;
+  onDragStart: (index: number) => void;
 }
 
 function useWindows(initialState = 0) : useWindowsInterface {
   const [contentsState, setContentsState] = useState<ContentInterface[]>(posts);
 
+  function onDragStart(indexWindowState: number) {
+    const moveUpfrontWindowsState = moveUpfront(contentsState, indexWindowState);
+    const reorderWinowsState = reorder(contentsState, moveUpfrontWindowsState);
+    setContentsState(reorderWinowsState);
+  }
 
   function changeWindowState(indexWindowState: number, newState: WindowStateType) {
     const newWindowsState = contentsState.map((contentState, index) => {
@@ -21,17 +27,17 @@ function useWindows(initialState = 0) : useWindowsInterface {
         }
     });
     if(["opened","fullscreen", "clicked"].includes(newState)) {
-      const moveFrontWindowsState = moveFront(newWindowsState, indexWindowState);
-      const reorderWinowsState = reorder(newWindowsState, moveFrontWindowsState);
+      const moveUpfrontWindowsState = moveUpfront(newWindowsState, indexWindowState);
+      const reorderWinowsState = reorder(newWindowsState, moveUpfrontWindowsState);
       setContentsState(reorderWinowsState);
     } else {
-      const moveBackWindowsState = moveBack(newWindowsState, indexWindowState);
-      const reorderWinowsState = reorder(newWindowsState, moveBackWindowsState);
+      const moveBackYardWindowsState = moveBackYard(newWindowsState, indexWindowState);
+      const reorderWinowsState = reorder(newWindowsState, moveBackYardWindowsState);
       setContentsState(reorderWinowsState);
     }
   }
 
-  function moveFront(contentStateModified: ContentInterface[], indexWindowState: number) : ContentInterface[] {
+  function moveUpfront(contentStateModified: ContentInterface[], indexWindowState: number) : ContentInterface[] {
     let copyContentState = contentStateModified.slice();
 
     const [item] = copyContentState.splice(indexWindowState, 1);
@@ -39,7 +45,8 @@ function useWindows(initialState = 0) : useWindowsInterface {
     return copyContentState;
   }
 
-  function moveBack(contentStateModified: ContentInterface[], indexWindowState: number): ContentInterface[] {
+
+  function moveBackYard(contentStateModified: ContentInterface[], indexWindowState: number): ContentInterface[] {
     let copyContentState = contentStateModified.slice();
 
     const [item] = copyContentState.splice(indexWindowState, 1);
@@ -57,7 +64,7 @@ function useWindows(initialState = 0) : useWindowsInterface {
       });
   }
 
-  return { contentsState, changeWindowState }
+  return { contentsState, changeWindowState, onDragStart }
 }
 
 export default createContainer(useWindows)

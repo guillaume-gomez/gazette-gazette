@@ -6,12 +6,12 @@ function randPosition(max: number) : string {
 }
 
 function randPositionX() : string {
-  return randPosition(75);
+  return randPosition(300);
 }
 
 
 function randPositionY() : string {
-  return randPosition(40);
+  return randPosition(55);
 }
 
 

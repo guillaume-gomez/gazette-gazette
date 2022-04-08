@@ -10,12 +10,14 @@ interface WindowInterface {
   changeWindowState: (newState : WindowStateType) => void;
   windowContent: ContentInterface;
   dragConstraints?: any;
+  onDragStart?: () => void;
 }
 
 
 function Window({
     changeWindowState,
     dragConstraints,
+    onDragStart,
     windowContent: { url, name, windowState, originalX, originalY, order, authorLink }
 } : WindowInterface) {
   const [variant, setVariant] = useState<string>("initial");
@@ -48,7 +50,6 @@ function Window({
 
 
   function minimize(event: MouseEvent<HTMLButtonElement>) {
-    console.log(windowState)
     if(windowState !== "opened") {
       changeWindowState("opened");
       event.stopPropagation();
@@ -101,6 +102,8 @@ function Window({
       animate={variant}
       variants={variants}
       initial={"initial"}
+      whileTap={{ cursor: "grabbing" }}
+      onDragStart={onDragStart}
       style={{ zIndex: order }}
       drag={windowState !== "fullscreen"} dragConstraints={dragConstraints}
     >
