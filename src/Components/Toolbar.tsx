@@ -15,12 +15,12 @@ function Toolbar({ minimize, maximize, close, label, author, disabled = false } 
   function renderLabel() {
     if(author) {
       return (
-        <>
+        <div className="author-label">
           <span>{label}</span>
-          <a href={`https://www.instagram.com/${author}`} className="custom-link">
+          <a href={`https://www.instagram.com/${author}`} className="custom-link truncate">
             <span>{`@${author}`}</span>
           </a>
-        </>
+        </div>
       )
     }
     return <span className="span-no-link">{label}</span>;

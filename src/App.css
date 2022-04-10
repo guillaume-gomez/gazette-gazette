@@ -69,3 +69,9 @@
 .border-height {
   height:  calc(100% - 12px);
 }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
