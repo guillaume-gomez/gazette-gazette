@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import { createContainer } from "unstated-next"
+import { createContainer } from "unstated-next";
+import { sortBy } from "lodash";
 import { ContentInterface, WindowStateType } from "../interfaces";
 import { posts } from "./data";
 
@@ -38,20 +39,22 @@ function useWindows(initialState = 0) : useWindowsInterface {
   }
 
   function moveUpfront(contentStateModified: ContentInterface[], indexWindowState: number) : ContentInterface[] {
-    let copyContentState = contentStateModified.slice();
+    let copyContentsState = contentStateModified.slice();
 
-    const [item] = copyContentState.splice(indexWindowState, 1);
-    copyContentState.push(item);
-    return copyContentState;
+    const [item] = copyContentsState.splice(indexWindowState, 1);
+    copyContentsState = sortBy(copyContentsState, "order");
+    copyContentsState.push(item);
+    return copyContentsState;
   }
 
 
   function moveBackYard(contentStateModified: ContentInterface[], indexWindowState: number): ContentInterface[] {
-    let copyContentState = contentStateModified.slice();
+    let copyContentsState = contentStateModified.slice();
 
-    const [item] = copyContentState.splice(indexWindowState, 1);
-    copyContentState.unshift(item);
-    return copyContentState;
+    const [item] = copyContentsState.splice(indexWindowState, 1);
+    copyContentsState = sortBy(copyContentsState, "order");
+    copyContentsState.unshift(item);
+    return copyContentsState;
   }
 
   function reorder(contentStateModified: ContentInterface[], contentStateOrdered: ContentInterface[]) : ContentInterface[] {
