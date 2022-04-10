@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { createContainer } from "unstated-next";
 import { sortBy } from "lodash";
 import { ContentInterface, WindowStateType } from "../interfaces";
@@ -63,7 +63,7 @@ function useWindows(initialState = 0) : useWindowsInterface {
         if(index !== -1) {
           return { ...contentState, order: (index + 1) };
         }
-        throw "something went wrong in the reorder function"
+        throw new Error("something went wrong in the reorder function");
       });
   }
 

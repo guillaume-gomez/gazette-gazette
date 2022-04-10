@@ -83,7 +83,7 @@ function Window({
           />
         </div>
         <div className="window-content">
-          <img className="window-image" src={process.env.PUBLIC_URL + url} />
+          <img className="window-image" src={process.env.PUBLIC_URL + url} alt={`artwork made by ${author}`} />
         </div>
       </>
     );
