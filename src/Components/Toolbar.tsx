@@ -7,17 +7,20 @@ interface ToolbarInterface {
   maximize?: (event: MouseEvent<HTMLButtonElement>) => void;
   close?: (event: MouseEvent<HTMLButtonElement>) => void;
   label: string;
-  authorLink?: string
+  author?: string
   disabled?: boolean
 }
-function Toolbar({ minimize, maximize, close, label, authorLink, disabled = false } : ToolbarInterface) {
+function Toolbar({ minimize, maximize, close, label, author, disabled = false } : ToolbarInterface) {
 
   function renderLabel() {
-    if(authorLink) {
+    if(author) {
       return (
-        <a href={authorLink} className="custom-link">
+        <>
           <span>{label}</span>
-        </a>
+          <a href={`https://www.instagram.com/${author}`} className="custom-link">
+            <span>{`@${author}`}</span>
+          </a>
+        </>
       )
     }
     return <span className="span-no-link">{label}</span>;

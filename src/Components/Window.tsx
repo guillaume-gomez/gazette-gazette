@@ -18,7 +18,7 @@ function Window({
     changeWindowState,
     dragConstraints,
     onDragStart,
-    windowContent: { url, name, windowState, originalX, originalY, order, authorLink }
+    windowContent: { url, name, windowState, originalX, originalY, order, author }
 } : WindowInterface) {
   const [variant, setVariant] = useState<string>("initial");
   const isMedium = useMediaQuery('(max-width: 768px)');
@@ -79,7 +79,7 @@ function Window({
             minimize={minimize}
             maximize={maximize}
             label={name}
-            authorLink={authorLink}
+            author={author}
           />
         </div>
         <div className="window-content">
