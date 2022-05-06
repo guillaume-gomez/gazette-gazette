@@ -17,7 +17,7 @@ function Toolbar({ minimize, maximize, close, label, author, disabled = false } 
       return (
         <div className="author-label">
           <span>{label}</span>
-          <a href={`https://www.instagram.com/${author}`} className="custom-link truncate">
+          <a href={`https://www.instagram.com/${author}`} target="_blank" rel="noopener" className="custom-link truncate">
             <span>{`@${author}`}</span>
           </a>
         </div>
