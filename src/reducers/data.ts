@@ -17,7 +17,7 @@ function randPositionY() : string {
 
 
 export const posts : ContentInterface[] = [
-  { url: '/01/Camille-Canard.jpg',
+  { url: '/00-Ducks/Camille-Canard.jpg',
     name: "1",
     windowState: "opened",
     originalX: randPositionX(),
@@ -25,7 +25,7 @@ export const posts : ContentInterface[] = [
     author: "kalinkajam",
     order: 1
   },
-  { url: '/01/Constantin_vilain petit canard.jpg',
+  { url: '/00-Ducks/Constantin_vilain petit canard.jpg',
     name: "2",
     windowState: "opened",
     originalX: randPositionX(),
@@ -33,7 +33,7 @@ export const posts : ContentInterface[] = [
     author: "constantin_zamfiresco",
     order: 2
   },
-  { url: '/01/Guillaume-DUCK-IN-A-DUCK-IN-A-DUCK.jpg',
+  { url: '/00-Ducks/Guillaume-DUCK-IN-A-DUCK-IN-A-DUCK.jpg',
     name: "3",
     windowState: "opened",
     originalX: randPositionX(),
@@ -41,7 +41,7 @@ export const posts : ContentInterface[] = [
     author: "guillaumebracciali",
     order: 3
   },
-  { url: '/01/Marie-Canard.jpg',
+  { url: '/00-Ducks/Marie-Canard.jpg',
     name: "4",
     windowState: "opened",
     originalX: randPositionX(),
@@ -49,7 +49,7 @@ export const posts : ContentInterface[] = [
     author: "toulymarie",
     order: 4
   },
-  { url: '/01/Romwald-Business-duck-colo.jpg',
+  { url: '/00-Ducks/Romwald-Business-duck-colo.jpg',
     name: "5",
     windowState: "opened",
     originalX: randPositionX(),
@@ -57,7 +57,7 @@ export const posts : ContentInterface[] = [
     author: "pomyad",
     order: 5
   },
-  { url: '/01/Romwald-Canard_3_Pattes.jpg',
+  { url: '/00-Ducks/Romwald-Canard_3_Pattes.jpg',
     name: "6",
     windowState: "opened",
     originalX: randPositionX(),
@@ -65,7 +65,7 @@ export const posts : ContentInterface[] = [
     author: "pomyad",
     order: 6
   },
-  { url: '/01/Romwald-canard-boys-club-badge.jpg',
+  { url: '/00-Ducks/Romwald-canard-boys-club-badge.jpg',
     name: "7",
     windowState: "opened",
     originalX: randPositionX(),
@@ -73,7 +73,7 @@ export const posts : ContentInterface[] = [
     author:"pomyad",
     order: 7
   },
-  { url: '/01/Romwald-Canard-boys-club-print.jpg',
+  { url: '/00-Ducks/Romwald-Canard-boys-club-print.jpg',
     name: "8",
     windowState: "opened",
     originalX: randPositionX(),
@@ -81,7 +81,7 @@ export const posts : ContentInterface[] = [
     author: "pomyad",
     order: 8
   },
-  { url: '/01/Romwald-Canard-joues.jpg',
+  { url: '/00-Ducks/Romwald-Canard-joues.jpg',
     name: "9",
     windowState: "opened",
     originalX: randPositionX(),
@@ -89,7 +89,7 @@ export const posts : ContentInterface[] = [
     author: "pomyad",
     order: 9
   },
-  { url: '/01/Romwald- Duck-the-police-2.jpg',
+  { url: '/00-Ducks/Romwald- Duck-the-police-2.jpg',
     name: "10",
     windowState: "opened",
     originalX: randPositionX(),
@@ -97,7 +97,7 @@ export const posts : ContentInterface[] = [
     author: "pomyad",
     order: 10
   },
-  { url: '/01/Sebastien-bd_duck_mazett000_seb.jpg',
+  { url: '/00-Ducks/Sebastien-bd_duck_mazett000_seb.jpg',
     name: "11",
     windowState: "opened",
     originalX: randPositionX(),
@@ -105,7 +105,7 @@ export const posts : ContentInterface[] = [
     author: "kob.bar2000",
     order: 11
   },
-  { url: '/01/seb_poopup2.jpg',
+  { url: '/00-Ducks/seb_poopup2.jpg',
     name: "12",
     windowState: "opened",
     originalX: randPositionX(),
