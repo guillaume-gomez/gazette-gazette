@@ -36,7 +36,7 @@ function Toolbar({ minimize, maximize, close, label, author, disabled = false } 
           <Button icon={"X"} onClick={(event) => close && close(event)} disabled={disabled} />
         </div>
       </div>
-      <div style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/dots.png')`, backgroundRepeat: "repeat-x", height: 20 }}>
+      <div style={{ backgroundImage: `url('${process.env.PUBLIC_URL}/dots.png')`, backgroundColor: "var(--primary-color)", backgroundRepeat: "repeat-x", height: 20 }}>
       </div>
     </div>
   );
