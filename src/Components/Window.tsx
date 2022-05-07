@@ -82,7 +82,7 @@ function Window({
             author={author}
           />
         </div>
-        <div className="window-content">
+        <div className="window-content" style={{ borderColor: "var(--primary-darker-color)" }}>
           <img className="window-image no-draggable-img" src={process.env.PUBLIC_URL + url} alt={`artwork made by ${author}`} />
         </div>
       </>

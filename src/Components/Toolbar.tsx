@@ -7,8 +7,8 @@ interface ToolbarInterface {
   maximize?: (event: MouseEvent<HTMLButtonElement>) => void;
   close?: (event: MouseEvent<HTMLButtonElement>) => void;
   label: string;
-  author?: string
-  disabled?: boolean
+  author?: string;
+  disabled?: boolean;
 }
 function Toolbar({ minimize, maximize, close, label, author, disabled = false } : ToolbarInterface) {
 

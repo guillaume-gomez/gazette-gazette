@@ -19,7 +19,8 @@
   gap: 1rem;
   background: var(--primary-color);
   color: var(--primary-color--button);
-  border-bottom: 2px solid var(--primary-darker-color);
+  border-bottom: 2px solid;
+  border-color: var(--primary-darker-color);
 }
 
 .custom-link {
