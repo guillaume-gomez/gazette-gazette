@@ -18,7 +18,7 @@ function Window({
     changeWindowState,
     dragConstraints,
     onDragStart,
-    windowContent: { url, name, windowState, originalX, originalY, order, author }
+    windowContent: { url, name, theme, windowState, originalX, originalY, order, author }
 } : WindowInterface) {
   const [variant, setVariant] = useState<string>("initial");
   const isMedium = useMediaQuery('(max-width: 768px)');
@@ -78,7 +78,7 @@ function Window({
             close={close}
             minimize={minimize}
             maximize={maximize}
-            label={name}
+            label={`${theme}-${name}`}
             author={author}
           />
         </div>

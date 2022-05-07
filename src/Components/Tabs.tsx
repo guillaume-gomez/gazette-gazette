@@ -1,5 +1,6 @@
 import React from 'react';
 import WindowManager from "../reducers/useWindows";
+import { generateID } from "../reducers/data";
 import Tab from "./Tab";
 import "./Tabs.css";
 
@@ -8,8 +9,8 @@ function Tabs() {
   return (
     <div className="tabs-container border-primary">
     {
-      contentsState.map(({name, windowState}, index) => (
-        <Tab key={index} name={name} disabled={windowState !== "closed"}  onClick={() => changeWindowState(index, 'opened') } />
+      contentsState.map((contentState, index) => (
+        <Tab key={index} name={generateID(contentState)} disabled={contentState.windowState !== "closed"}  onClick={() => changeWindowState(index, 'opened') } />
        )
       )
     }

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { createContainer } from "unstated-next";
 import { sortBy } from "lodash";
 import { ContentInterface, WindowStateType } from "../interfaces";
-import { posts } from "./data";
+import { posts, generateID } from "./data";
 
 interface useWindowsInterface {
   contentsState: ContentInterface[];
@@ -59,7 +59,7 @@ function useWindows(initialState = 0) : useWindowsInterface {
 
   function reorder(contentStateModified: ContentInterface[], contentStateOrdered: ContentInterface[]) : ContentInterface[] {
       return contentStateModified.map((contentState) => {
-        const index = contentStateOrdered.findIndex(c => c.name === contentState.name);
+        const index = contentStateOrdered.findIndex(c => generateID(c) === generateID(contentState));
         if(index !== -1) {
           return { ...contentState, order: (index + 1) };
         }

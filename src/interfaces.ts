@@ -8,4 +8,5 @@ export interface ContentInterface {
   originalX: number | string;
   originalY: number | string;
   order: number;
+  theme: string;
 }
